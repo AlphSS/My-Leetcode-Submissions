@@ -1,0 +1,19 @@
+1class Solution {
+2    public boolean digitCount(String num) {
+3        HashMap<Integer, Integer> map = new HashMap<>();
+4
+5        for(int i=0;i<num.length();i++){
+6            int n = num.charAt(i)-'0';
+7            map.put(n,map.getOrDefault(n,0)+1);
+8        }
+9
+10        for(int i=0;i<num.length();i++){
+11            int n = num.charAt(i)-'0';
+12            if(map.getOrDefault(i,0) != n){
+13                return false;
+14            }
+15        }
+16
+17        return true;
+18    }
+19}
