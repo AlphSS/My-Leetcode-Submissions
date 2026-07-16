@@ -1,0 +1,29 @@
+1class Solution {
+2
+3    public int findGcd(int a,int b){
+4        if(b == 0){
+5            return a;
+6        }
+7        return findGcd(b, a%b);
+8    }
+9
+10    public long gcdSum(int[] nums) {
+11        int prefixGcd[] = new int[nums.length];
+12        int max = Integer.MIN_VALUE;
+13
+14        for(int i=0;i<nums.length;i++){
+15            max = Math.max(nums[i],max);
+16            prefixGcd[i] = findGcd(max,nums[i]);
+17        }
+18
+19        Arrays.sort(prefixGcd);
+20
+21        int left=0,right = prefixGcd.length-1;
+22        long res = 0;
+23        while(left<right){
+24            res+= findGcd(prefixGcd[left++],prefixGcd[right--]);
+25        }
+26
+27        return res;
+28    }
+29}
