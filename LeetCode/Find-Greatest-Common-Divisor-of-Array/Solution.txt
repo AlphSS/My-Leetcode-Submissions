@@ -1,0 +1,17 @@
+1class Solution {
+2
+3    public int gcd(int a, int b){
+4        if(b == 0){
+5            return a;
+6        }
+7        return gcd(b, a%b);
+8    }
+9
+10    public int findGCD(int[] nums) {
+11       Arrays.sort(nums);
+12       int a = nums[0];
+13       int b = nums[nums.length-1];
+14
+15       return gcd(a,b);
+16    }   
+17}
