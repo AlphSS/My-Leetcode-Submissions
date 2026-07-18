@@ -1,19 +1,29 @@
 1class Solution {
 2    public int findGCD(int[] nums) {
-3        Arrays.sort(nums);
-4        int a = nums[0];
-5        int b = nums[nums.length - 1];
-6        return gcd(a, b);
-7
-8    }
-9
-10    public int gcd(int a, int b){
-11        while(b != 0){
-12            int rem = a % b;
-13            a = b;
-14            b = rem;
-15            gcd(a , b);
-16        }
-17        return a;
+3        int a = nums[0];
+4        int b = nums[0];
+5
+6        for(int i = 0; i < nums.length; i++){
+7            if(a > nums[i]){
+8                a = nums[i];
+9            }
+10
+11            if(b < nums[i]){
+12                b = nums[i];
+13            }
+14
+15        }
+16        return gcd(a, b);
+17
 18    }
-19}
+19
+20    public int gcd(int a, int b){
+21        while(b != 0){
+22            int rem = a % b;
+23            a = b;
+24            b = rem;
+25            gcd(a , b);
+26        }
+27        return a;
+28    }
+29}
