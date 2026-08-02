@@ -1,0 +1,18 @@
+1class Solution {
+2    public List<List<String>> groupAnagrams(String[] strs) {
+3        if(strs.length == 0){
+4            return new ArrayList<>();
+5        }
+6
+7        HashMap<String,List<String>> map = new HashMap<>();
+8
+9        for(String s : strs){
+10            char array[] = s.toCharArray(); // ['e','a','t']
+11            Arrays.sort(array); // ['a','e','t']
+12            String sortedString = new String(array); //"aet"
+13            map.computeIfAbsent(sortedString, k->new ArrayList<>()).add(s);
+14        }
+15
+16        return new ArrayList<>(map.values());
+17    }
+18}
