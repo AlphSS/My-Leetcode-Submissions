@@ -1,29 +1,25 @@
 1class Solution {
 2    public void sortColors(int[] nums) {
-3        int countZeros = 0;
-4        int countOnce = 0;
-5        int countTows = 0;
-6        for(int i = 0; i <= nums.length - 1; i++){
-7            if(nums[i]==0) countZeros++;
-8            if(nums[i]==1) countOnce++;
-9            if(nums[i]==2) countTows++;
-10        }
-11
-12        int i = 0;
-13        while(countZeros > 0){
-14            nums[i] = 0;
-15            i++;
-16            countZeros--;
-17        }
-18        while(countOnce > 0){
-19            nums[i] = 1;
-20            i++;
-21            countOnce--;
-22        }
-23        while(countTows > 0){
-24            nums[i] = 2;
-25            i++;
-26            countTows--;
-27        }
-28    }
-29}
+3        int low = 0;
+4        int mid = 0;
+5        int right = nums.length - 1;
+6
+7        while(mid <= right){
+8            if(nums[mid] == 1){
+9                mid++;
+10            }else if(nums[mid] == 0){
+11                int temp = nums[mid];
+12                nums[mid] = nums[low];
+13                nums[low] = temp;
+14                low++;
+15                mid++;
+16            }else{
+17                int temp = nums[mid];
+18                nums[mid] = nums[right];
+19                nums[right] = temp;
+20                right--;
+21
+22            }
+23        }
+24    }
+25}
